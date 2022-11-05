@@ -8,7 +8,7 @@ import (
 	"github.com/tidwall/gjson"
 )
 
-func getLatLon(ip string) (float64, float64) {
+func getLatLon(ip string) (float64, float64, string) {
 	req, err := http.Get("http://ip-api.com/json/" + ip)
 	if err != nil {
 		log.Fatalln(err)
@@ -19,5 +19,6 @@ func getLatLon(ip string) (float64, float64) {
 	}
 	lat := gjson.Get(string(res), "lat").Float()
 	lon := gjson.Get(string(res), "lon").Float()
-	return lat, lon
+	city := gjson.Get(string(res), "city").String()
+	return lat, lon, city
 }

@@ -5,6 +5,8 @@ import (
 )
 
 func main() {
-	lat, lon := getLatLon(getPublicIP())
-	fmt.Println("Your Public address : ", getPublicIP(), "\n", "Current temprature : ", getWeather(lat, lon))
+	lat, lon, city := getLatLon(getPublicIP())
+	fmt.Println("Your Public address : ", getPublicIP(), "\n",
+		"You're in: ", city, "\n",
+		"Current temprature : ", getWeather(lat, lon))
 }
