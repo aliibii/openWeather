@@ -10,15 +10,15 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	lat, lon, city, err := getLatLon(userIP)
+	geoInfo, err := getLatLon(userIP)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	currentTemp, err := getWeather(lat, lon)
+	currentTemp, err := getWeather(geoInfo.lat, geoInfo.lon)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	fmt.Println("Your Public address : ", userIP, "\n",
-		"You're in: ", city, "\n",
+		"You're in: ", geoInfo.city, "\n",
 		"Current temprature : ", currentTemp)
 }
